@@ -117,10 +117,11 @@ COPY --from=builder /usr/src/app /usr/src/app
 COPY . /usr/src/app
 
 RUN mkdir -p /data && chown node:node /data
-# VOLUME /data
+VOLUME /data
 WORKDIR /data
 
-EXPOSE 8080
+ARG PORT
+EXPOSE $PORT
 
 USER node:node
 

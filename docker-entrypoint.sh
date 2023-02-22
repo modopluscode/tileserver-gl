@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -eo pipefail
 
@@ -6,8 +6,11 @@ set -eo pipefail
 mkdir -p $MNT_DIR
 
 echo "Mounting GCS Fuse."
-gcsfuse --debug_gcs --debug_fuse $BUCKET $MNT_DIR 
+gcsfuse --implicit-dirs --debug_gcs --debug_fuse $BUCKET $MNT_DIR 
 echo "Mounting completed."
+
+ls -l /data
+ls /data
 
 if ! which -- "${1}"; then
   # first arg is not an executable
